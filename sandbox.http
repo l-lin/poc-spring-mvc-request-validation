@@ -1,0 +1,50 @@
+GET http://localhost:8080/cats
+Accept: application/json
+
+###
+GET http://localhost:8080/cats/1
+Accept: application/json
+
+###
+GET http://localhost:8080/cats/search?name=Tony
+Accept: application/json
+
+###
+POST http://localhost:8080/cats
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Miaou",
+  "age": 10
+}
+
+###
+
+### Simulate cat not found
+GET http://localhost:8080/cats/1000
+Accept: application/json
+
+### Simulate bean validation error on query param
+GET http://localhost:8080/cats/search?name=
+Accept: application/json
+
+### Simulate bean validation error on query param
+GET http://localhost:8080/cats/search?name=foobar
+Accept: application/json
+
+### Simulate bean validation error on path variable
+GET http://localhost:8080/cats/0
+Accept: application/json
+
+### Simulate bean validation error on request body
+POST http://localhost:8080/cats
+Content-Type: application/json
+Accept: application/json
+
+{
+	"name": "foobar",
+	"age": 10
+}
+
+###
